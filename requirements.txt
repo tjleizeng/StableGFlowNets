@@ -1,0 +1,41 @@
+# One environment for training and notebooks: Python 3.10 (paper: 3.10.18).
+# Install the CUDA 12.4 build of torch first, then this file:
+#   python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+#   python -m pip install -r requirements.txt
+# Full setup and CPU override: code/notebooks/README.md
+
+# Training and scientific computing
+torch==2.5.1
+# TF-Agents 0.15 uses NumPy aliases removed in 1.24.
+numpy==1.23.5
+pandas==2.3.1
+scipy==1.14.1
+gymnasium==0.29.1
+einops==0.8.0
+tqdm==4.67.1
+wandb==0.22.2
+
+# Graph-based sEH environment (no torch-scatter or torch-sparse required)
+rdkit==2025.9.5
+torch_geometric==2.7.0
+scikit-learn==1.5.2
+
+# RNA oracle and FLEXS's eagerly imported baseline dependencies
+flexs==0.2.8
+ViennaRNA==2.7.2
+polyleven==0.8
+# Keep this compatible group together: newer TF-Agents pins typing-extensions
+# below the version required by PyTorch 2.5.1.
+tensorflow==2.15.1
+tensorflow-probability==0.23.0
+tf-agents==0.15.0
+protobuf==4.25.8
+
+# Notebook execution, plots, and checks
+matplotlib==3.10.3
+seaborn==0.13.2
+nbformat==5.10.4
+nbclient==0.10.2
+nbconvert==7.16.6
+ipykernel==6.29.5
+pytest==9.0.1

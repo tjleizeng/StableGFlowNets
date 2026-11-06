@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+.repro-work/
+.setup-check/
+outputs/
+output/
+figures/
+wandb/
+scripts/logs/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+# Large research caches are distributed separately.
+code/envs/rna/*allpreds*.pkl
+code/envs/sEH/sehstr_gbtr_allpreds.pkl
+*.pkl
+*.csv
+*.gz
+*.json
+*.pdbqt
