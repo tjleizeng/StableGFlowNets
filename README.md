@@ -8,12 +8,12 @@
 
 Generative Flow Networks (GFlowNets) learn to sample structured objects in proportion to their rewards. They support applications such as biological design, integer programming, and language-model fine-tuning, where generating diverse, high-quality candidates is valuable. In practice, however, training can suffer from severe loss spikes and mode collapse.
 
-Existing theory establishes that satisfying the balance conditions exactly recovers the desired reward-proportional distribution. Practical training rarely reaches this ideal: losses remain nonzero, and their implications for sampling accuracy are less clear. This raises the questions: **What do nonzero training losses tell us about distributional accuracy for GFlowNets?** Our [paper](https://arxiv.org/pdf/2605.01729) connects GFlowNet training losses to total variation (TV) distance and uses this analysis to develop Stable GFlowNets.
+Existing theory establishes that satisfying the balance conditions exactly recovers the desired reward-proportional distribution. Practical training rarely reaches this ideal: losses remain nonzero, and their implications for sampling accuracy are less clear. This raises the question: **What do nonzero training losses tell us about distributional accuracy for GFlowNets?** Our [paper](https://arxiv.org/pdf/2605.01729) connects GFlowNet training losses to total variation (TV) distance and uses this analysis to develop Stable GFlowNets.
 
 ## 🧠 Our approach and key findings
 
 - **Large losses can coexist with accurate sampling.** We show that GFlowNet losses can be arbitrarily large even when the learned distribution is close to the target in TV distance. Loss magnitude alone therefore gives an incomplete picture of distributional accuracy.
-- **Bounded losses yield distributional guarantees.** A uniform bound on GFlowNet loss gives an explicit TV bound that depends on the maximum loss (Theorem 3.5). We also develop a probabilistic guarantee (Theorem 3.6), which enables the following type of arguments: at 95% of confidence level, the learned and target probabilities differ by at most 10 percentage points for every set of terminal states.
+- **Bounded losses yield distributional guarantees.** A uniform bound on GFlowNet loss gives an explicit TV bound that depends on the maximum loss (Theorem 3.5). We also develop a probabilistic guarantee (Theorem 3.6), which enables the following type of arguments: at the 95% confidence level, the learned and target probabilities differ by at most 10 percentage points for every set of terminal states.
 - **Reference flow controls extreme losses.** Bounds that depend on the maximum loss can become uninformative when individual trajectories have large losses. We introduce a nonnegative reference flow for each trajectory and add it to both the numerator and denominator of its balance ratio, reducing extreme log-ratios. We analyze this adjustment through a modified target distribution and characterize its effect on the TV guarantees (Theorems 3.10 and 3.11).
 - **Stable GFlowNets with TV monitoring and probabilistic certification.** Stable GFlowNets combines adaptive reference flow with forward and reward-weighted backward sampling to control loss spikes. It pairs this stabilization mechanism with two complementary features: an empirical $M_{\text{TV}}$ that tracks distributional error using only backward-sampled trajectories, and a separate $B_{\text{TV}}$ that provides a formal probabilistic TV certificate—scoped to the evaluated subgraph under restricted terminal-state support—when the required conditions are met.
 
@@ -254,7 +254,7 @@ Scientific source fingerprints are part of cohort identity. Old/unidentified FM 
 
 ### Run the notebooks
 
-First train a run with local JSONL metrics enabled. The [StableGFN quickstart](#how-to-use-stablegfn) provides a verified example. From Bash:
+First, train a run with local JSONL metrics enabled. The [StableGFN quickstart](#how-to-use-stablegfn) provides a verified example. From Bash:
 
 ```bash
 mkdir -p outputs/analysis
